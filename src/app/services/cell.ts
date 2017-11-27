@@ -1,11 +1,9 @@
-import { Location } from './location'
+
 
 export class Cell {
     isLiving:boolean
-    location:Location
-    constructor (isLiving:boolean, location:Location) {
+    constructor (isLiving:boolean) {
         this.isLiving = isLiving
-        this.location = location
         this.newLivingCell = this.newLivingCell.bind(this)
         this.newDeadCell = this.newDeadCell.bind(this)
     }
@@ -30,10 +28,10 @@ export class Cell {
     }
 
     newLivingCell () : Cell {
-        return new Cell(true, this.location)
+        return new Cell(true)
     }
 
     newDeadCell () : Cell {
-        return new Cell(false, this.location)
+        return new Cell(false)
     }
 }
