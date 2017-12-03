@@ -13,7 +13,9 @@ export class GameComponent implements OnInit {
     generations:number
     canPaint:boolean
     gameService:GameService
-    constructor(gameService:GameService) {}
+    constructor(gameService:GameService) {
+        this.gameService = gameService
+    }
 
     ngOnInit() {
         this.generations = 0
