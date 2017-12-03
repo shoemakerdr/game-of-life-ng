@@ -3,14 +3,17 @@
 </p>
 <button (click)='start()'>START</button>
 <button (click)='pause()'>PAUSE</button>
-<button (click)='stop()'>STOP</button>
-<table>
+<button (click)='clear()'>CLEAR</button>
+<button (click)='newRandom()'>RANDOM</button>
+<button (click)='togglePaint()'>PAINT: {{canPaint ? 'ON' : 'OFF'}}</button>
+<table class='table'>
     <tbody>
         <tr *ngFor='let gridRows of _gameService.getGameState()'>
-            <td 
+            <td
                 *ngFor='let cell of gridRows' 
                 class='{{cell.getIsLiving() ? "space living" : "space dead" }}'
                 (mousedown)='cell.toggleLife()'
+                (mouseenter)='paint(cell)'
             ></td>
         </tr>
     </tbody>
