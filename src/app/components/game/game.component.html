@@ -1,0 +1,17 @@
+<p>
+  Generations: {{generations}}
+</p>
+<button (click)='start()'>START</button>
+<button (click)='pause()'>PAUSE</button>
+<button (click)='stop()'>STOP</button>
+<table>
+    <tbody>
+        <tr *ngFor='let gridRows of _gameService.getGameState()'>
+            <td 
+                *ngFor='let cell of gridRows' 
+                class='{{cell.getIsLiving() ? "space living" : "space dead" }}'
+                (mousedown)='cell.toggleLife()'
+            ></td>
+        </tr>
+    </tbody>
+</table>
