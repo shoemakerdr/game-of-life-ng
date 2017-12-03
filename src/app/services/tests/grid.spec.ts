@@ -201,7 +201,7 @@ describe('getLivingNeighbors method', () => {
     })
 })
 
-describe('toggleCell method', () => {
+describe('toggleCellLife method', () => {
     describe('when given a valid cell location with a dead cell', () => {
         const grid = newGrid(3,3)
         const location = {row: 0, column: 0}
@@ -211,7 +211,7 @@ describe('toggleCell method', () => {
                 [cell(false), cell(false), cell(false)],
                 [cell(false), cell(false), cell(false)]
             ]
-            grid.toggleCell(location)
+            grid.toggleCellLife(location)
             compareGridStates(grid.getState(), expected)
         })
     })
@@ -224,7 +224,7 @@ describe('toggleCell method', () => {
                 [cell(true), cell(true), cell(true)],
                 [cell(true), cell(true), cell(true)]
             ]
-            grid.toggleCell(location)
+            grid.toggleCellLife(location)
             compareGridStates(grid.getState(), expected)
         })
     })
