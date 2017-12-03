@@ -8,7 +8,7 @@
 <button (click)='togglePaint()'>PAINT: {{canPaint ? 'ON' : 'OFF'}}</button>
 <table class='table'>
     <tbody>
-        <tr *ngFor='let gridRows of _gameService.getGameState()'>
+        <tr *ngFor='let gridRows of gameService.getGameState()'>
             <td
                 *ngFor='let cell of gridRows' 
                 class='{{cell.getIsLiving() ? "space living" : "space dead" }}'

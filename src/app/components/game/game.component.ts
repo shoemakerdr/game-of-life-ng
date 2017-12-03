@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core'
 import { GameService } from '../../services/game.service'
-import { clearTimeout } from 'timers';
 
 @Component({
     selector: 'app-game',
@@ -13,25 +12,26 @@ export class GameComponent implements OnInit {
     intervalId:number
     generations:number
     canPaint:boolean
-    constructor(private _gameService:GameService) {}
+    gameService:GameService
+    constructor(gameService:GameService) {}
 
     ngOnInit() {
         this.generations = 0
         this.gridRowLength = 30
         this.gridColumnLength = 30
-        this._gameService.setGrid(this._gameService.getRandomGrid(this.gridRowLength, this.gridColumnLength))
+        this.gameService.setGrid(this.gameService.getRandomGrid(this.gridRowLength, this.gridColumnLength))
         this.start()
     }
 
     newRandom () : void {
-        this._gameService.setGrid(this._gameService.getRandomGrid(this.gridRowLength, this.gridColumnLength))        
+        this.gameService.setGrid(this.gameService.getRandomGrid(this.gridRowLength, this.gridColumnLength))        
     }
 
     start () : void {
         window.clearInterval(this.intervalId)
         this.intervalId = window.setInterval(() => {
             this.generations++
-            this._gameService.setNextGameState()
+            this.gameService.setNextGameState()
         }, 100)
     }
 
@@ -42,7 +42,7 @@ export class GameComponent implements OnInit {
     clear () : void {
         this.generations = 0
         window.clearInterval(this.intervalId)
-        this._gameService.setGrid(this._gameService.newGrid(this.gridRowLength, this.gridColumnLength))
+        this.gameService.setGrid(this.gameService.newGrid(this.gridRowLength, this.gridColumnLength))
     }
 
     togglePaint () : void {
