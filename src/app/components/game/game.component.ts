@@ -12,32 +12,46 @@ export class GameComponent implements OnInit {
     gridColumnLength:number
     intervalId:number
     generations:number
-    constructor(private _gameService:GameService) {
-        this.gridRowLength = 50
-        this.gridColumnLength = 50
-    }
+    canPaint:boolean
+    constructor(private _gameService:GameService) {}
 
     ngOnInit() {
         this.generations = 0
         this.gridRowLength = 30
         this.gridColumnLength = 30
-        this._gameService.setGrid(this._gameService.newGrid(this.gridRowLength, this.gridColumnLength))
+        this._gameService.setGrid(this._gameService.getRandomGrid(this.gridRowLength, this.gridColumnLength))
+        this.start()
+    }
+
+    newRandom () : void {
+        this._gameService.setGrid(this._gameService.getRandomGrid(this.gridRowLength, this.gridColumnLength))        
     }
 
     start () : void {
+        window.clearInterval(this.intervalId)
         this.intervalId = window.setInterval(() => {
             this.generations++
             this._gameService.setNextGameState()
-        }, 30)
+        }, 100)
     }
 
     pause () {
         window.clearInterval(this.intervalId)
     }
 
-    stop () : void {
+    clear () : void {
         this.generations = 0
         window.clearInterval(this.intervalId)
+        this._gameService.setGrid(this._gameService.newGrid(this.gridRowLength, this.gridColumnLength))
+    }
+
+    togglePaint () : void {
+        this.canPaint = !this.canPaint
+    }
+
+    paint (cell) : void {
+        if (this.canPaint)
+            cell.setIsLiving(true)
     }
 
 }
