@@ -36,6 +36,18 @@ export class GameService {
         return new Grid(grid)
     }
 
+    getRandomGrid (rowLength:number, columnLength:number) : Grid {
+        const grid = []
+        for (let i = 0; i < columnLength; i++) {
+            const row = []
+            for (let j = 0; j < rowLength; j++) {
+                row.push(new Cell(Math.floor(Math.random() * 2) ? true : false))
+            }
+            grid.push(row)
+        }
+        return new Grid(grid)
+    }
+
     toggleCellAt (location:Location) : void {
         this.grid.toggleCellLife(location)
     }
