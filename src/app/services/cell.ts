@@ -12,6 +12,10 @@ export class Cell {
         return this.isLiving
     }
 
+    setIsLiving (isLiving:boolean) : void {
+        this.isLiving = isLiving
+    }
+
     nextGenerationCell (neighbors:number) : Cell {
         const newCell = {
             0: this.newDeadCell,
@@ -25,6 +29,10 @@ export class Cell {
             8: this.newDeadCell,
         }
         return newCell[neighbors]()
+    }
+
+    toggleLife () {
+        this.setIsLiving(!this.getIsLiving())
     }
 
     newLivingCell () : Cell {
