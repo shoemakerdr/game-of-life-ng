@@ -19,6 +19,10 @@ export class Grid {
         return this.state
     }
 
+    setState (state:Cell[][]) : void {
+        this.state = state
+    }
+
     nextState () : Cell[][] {
         return this.getState().map((row, r) => {
             return row.map((column, c) => {
@@ -28,10 +32,10 @@ export class Grid {
         })
     }
 
-    toggleCell (location:Location) : void {
+    toggleCellLife (location:Location) : void {
         const { row, column } = location
         const cell = this.state[row][column]
-        this.state[row][column] = new Cell(!cell.getIsLiving())
+        cell.toggleLife()
     }
 
     getLivingNeighbors (location:Location) : number {
