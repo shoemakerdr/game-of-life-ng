@@ -1,18 +1,13 @@
-.column {
+.table {
+    margin: 16px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-}
-
-.row {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    border-spacing: 1px;
 }
 
 .space {
-    width: 12px;
-    height: 12px;
+    width: 20px;
+    height: 20px;
 }
 
 .living {
@@ -20,5 +15,5 @@
 }
 
 .dead {
-    background-color:#999;
+    background-color:#bbb;
 }
