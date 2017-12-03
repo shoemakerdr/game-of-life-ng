@@ -28,10 +28,11 @@ export class GameComponent implements OnInit {
     }
 
     start () : void {
+        const self = this
         window.clearInterval(this.intervalId)
         this.intervalId = window.setInterval(() => {
-            this.generations++
-            this.gameService.setNextGameState()
+            self.generations++
+            self.gameService.setNextGameState()
         }, 100)
     }
 
