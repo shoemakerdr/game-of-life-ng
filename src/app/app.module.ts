@@ -1,16 +1,17 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser'
+import { NgModule } from '@angular/core'
 
-import { AppComponent } from './app.component';
-import { GameService } from './services/game.service';
-
+import { AppComponent } from './app.component'
+import { GameService } from './services/game.service'
+import { GameComponent } from './components/game/game.component'
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        GameComponent
     ],
     imports: [
-        BrowserModule
+        BrowserModule,
     ],
     providers: [GameService],
     bootstrap: [AppComponent]
